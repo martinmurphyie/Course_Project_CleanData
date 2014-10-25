@@ -1,25 +1,95 @@
-Course_Project_CleanData
-========================
-The purpose of this project is to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. 
-The data used represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained: 
-http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
-The original data for the Project was found here: 
-https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+DATA DICTIONARY
 
-The R Script run_analysis.R does the following:
-1.  Merges the training and the test sets to create one data set.
-2.  Extracts only the measurements on the mean and standard deviation for each measurement. 
-3.  Uses descriptive activity names to name the activities in the data set
-4.  Appropriately labels the data set with descriptive variable names. 
-5.  From the data set in step 4, This creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
+Subject
+	a number from 1-30 indicating which of the 30 volunteers the data refers to
 
-This script was created and tested on a system running windows 8.1, using Rstudio Version 0.98.1028 and R 3.1.1. The "reshape" package was installed also in order to use the melt() and cast() functions.
+Activity_Name
+	1 of 6 activities WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING 
 
-The script uses download.file() to download the original dataset which is a Zip file to the working directory. The script uses unzip() to extract all the files into a "UCI HAR Dataset" folder in the working directory.  All of the test files ( subject_test.txt, X_test.txt, Y_test.txt )  and train files ( subject_train.txt, X_train.txt, Y_train.txt )are then loaded into data frames using read.table() commands, and all of the data is merged to form 1 dataset. The variables are named using the feature names from features.txt. This dataset comprises 10299 observations of 563 variables. 
-
-The data then has an extra variable added to describe the Activity name. An extract is taken from this data of Subject, Activity Name and 86 other Variables describing Mean or Standard Deviation data.
-
-The dataset is transformed into a long dataset using the melt function with Subject and Activity_Name used as IDs.
-The dataset is then cast using mean of the variables to give the final dataset of 180 observations (30 subjects * 6 Activities) for 88 variables.
-
-The clean and tidy dataset is oputput to a file in the "UCI HAR Dataset" folder in the working directory using the write.file() function.
+list of 86 variables taken from original data in the UCI HAR Dataset. The value in each case is the mean of each variable for each activity and each subject
+tBodyAcc-mean()-X
+tBodyAcc-mean()-Y
+tBodyAcc-mean()-Z
+tBodyAcc-std()-X
+tBodyAcc-std()-Y
+tBodyAcc-std()-Z
+tGravityAcc-mean()-X
+tGravityAcc-mean()-Y
+tGravityAcc-mean()-Z
+tGravityAcc-std()-X
+tGravityAcc-std()-Y
+tGravityAcc-std()-Z
+tBodyAccJerk-mean()-X
+tBodyAccJerk-mean()-Y
+tBodyAccJerk-mean()-Z
+tBodyAccJerk-std()-X
+tBodyAccJerk-std()-Y
+tBodyAccJerk-std()-Z
+tBodyGyro-mean()-X
+tBodyGyro-mean()-Y
+tBodyGyro-mean()-Z
+tBodyGyro-std()-X
+tBodyGyro-std()-Y
+tBodyGyro-std()-Z
+tBodyGyroJerk-mean()-X
+tBodyGyroJerk-mean()-Y
+tBodyGyroJerk-mean()-Z
+tBodyGyroJerk-std()-X
+tBodyGyroJerk-std()-Y
+tBodyGyroJerk-std()-Z
+tBodyAccMag-mean()
+tBodyAccMag-std()
+tGravityAccMag-mean()
+tGravityAccMag-std()
+tBodyAccJerkMag-mean()
+tBodyAccJerkMag-std()
+tBodyGyroMag-mean()
+tBodyGyroMag-std()
+tBodyGyroJerkMag-mean()
+tBodyGyroJerkMag-std()
+fBodyAcc-mean()-X
+fBodyAcc-mean()-Y
+fBodyAcc-mean()-Z
+fBodyAcc-std()-X
+fBodyAcc-std()-Y
+fBodyAcc-std()-Z
+fBodyAcc-meanFreq()-X
+fBodyAcc-meanFreq()-Y
+fBodyAcc-meanFreq()-Z
+fBodyAccJerk-mean()-X
+fBodyAccJerk-mean()-Y
+fBodyAccJerk-mean()-Z
+fBodyAccJerk-std()-X
+fBodyAccJerk-std()-Y
+fBodyAccJerk-std()-Z
+fBodyAccJerk-meanFreq()-X
+fBodyAccJerk-meanFreq()-Y
+fBodyAccJerk-meanFreq()-Z
+fBodyGyro-mean()-X
+fBodyGyro-mean()-Y
+fBodyGyro-mean()-Z
+fBodyGyro-std()-X
+fBodyGyro-std()-Y
+fBodyGyro-std()-Z
+fBodyGyro-meanFreq()-X
+fBodyGyro-meanFreq()-Y
+fBodyGyro-meanFreq()-Z
+fBodyAccMag-mean()
+fBodyAccMag-std()
+fBodyAccMag-meanFreq()
+fBodyBodyAccJerkMag-mean()
+fBodyBodyAccJerkMag-std()
+fBodyBodyAccJerkMag-meanFreq()
+fBodyBodyGyroMag-mean()
+fBodyBodyGyroMag-std()
+fBodyBodyGyroMag-meanFreq()
+fBodyBodyGyroJerkMag-mean()
+fBodyBodyGyroJerkMag-std()
+fBodyBodyGyroJerkMag-meanFreq()
+angle(tBodyAccMean,gravity)
+angle(tBodyAccJerkMean),gravityMean)
+angle(tBodyGyroMean,gravityMean)
+angle(tBodyGyroJerkMean,gravityMean)
+angle(X,gravityMean)
+angle(Y,gravityMean)
+angle(Z,gravityMean)
